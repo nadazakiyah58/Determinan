@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Penghitung Determinan</title>
+</head>
+<body>
+    <h2>Latihan 1: Hitung Determinan</h2>
+    <label>Input A:</label> <input type="number" id="inputA"><br><br>
+    <label>Input B:</label> <input type="number" id="inputB"><br><br>
+    <label>Input C:</label> <input type="number" id="inputC"><br><br>
+    <button onclick="hitungDeterminan()">Hitung</button>
+
+    <div id="hasil" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+        function hitungDeterminan() {
+            let a = parseFloat(document.getElementById('inputA').value);
+            let b = parseFloat(document.getElementById('inputB').value);
+            let c = parseFloat(document.getElementById('inputC').value);
+            
+            // Rumus: B * B - 4 * A * C
+            let det = (b * b) - (4 * a * c);
+            let keterangan = "";
+
+            if (det > 0) {
+                keterangan = "Di atas garis kurva";
+            } else if (det === 0) {
+                keterangan = "Berada di garis kurva";
+            } else {
+                keterangan = "Berada di bawah garis kurva";
+            }
+
+            document.getElementById('hasil').innerHTML = 
+                "Hasil Determinan: " + det + "<br>Keterangan: " + keterangan;
+        }
+    </script>
+</body>
+</html>
