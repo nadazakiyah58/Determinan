@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Penghitung Determinan</title>
-</head>
-<body>
-    <h2>Latihan 1: Hitung Determinan</h2>
-    <label>Input A:</label> <input type="number" id="inputA"><br><br>
-    <label>Input B:</label> <input type="number" id="inputB"><br><br>
-    <label>Input C:</label> <input type="number" id="inputC"><br><br>
-    <button onclick="hitungDeterminan()">Hitung</button>
-
-    <div id="hasil" style="margin-top: 20px; font-weight: bold;"></div>
-
+    <title>Hitung Determinan</title>
     <script>
         function hitungDeterminan() {
-            let a = parseFloat(document.getElementById('inputA').value);
-            let b = parseFloat(document.getElementById('inputB').value);
-            let c = parseFloat(document.getElementById('inputC').value);
-            
-            // Rumus: B * B - 4 * A * C
-            let det = (b * b) - (4 * a * c);
-            let keterangan = "";
+            var A = parseFloat(document.form1.a.value);
+            var B = parseFloat(document.form1.b.value);
+            var C = parseFloat(document.form1.c.value);
 
-            if (det > 0) {
-                keterangan = "Di atas garis kurva";
-            } else if (det === 0) {
-                keterangan = "Berada di garis kurva";
+            var D = (B * B) - (4 * A * C);
+            var keterangan = "";
+
+            if (D > 0) {
+                keterangan = "Determinannya lebih dari nol, berada di atas garis kurva";
+            } else if (D == 0) {
+                keterangan = "Determinannya sama dengan nol, berada di garis kurva";
             } else {
-                keterangan = "Berada di bawah garis kurva";
+                keterangan = "Determinannya kurang dari nol, berada di bawah garis kurva";
             }
-
-            document.getElementById('hasil').innerHTML = 
-                "Hasil Determinan: " + det + "<br>Keterangan: " + keterangan;
+            document.form1.hasil.value = D;
+            document.form1.ket.value = keterangan;
         }
     </script>
+</head>
+
+<body>
+    <h3>Menghitung Determinan</h3>
+
+    <form name="form1">
+        Nilai A : <input type="text" name="a"><br><br>
+        Nilai B : <input type="text" name="b"><br><br>
+        Nilai C : <input type="text" name="c"><br><br>
+
+        <input type="button" value="Hitung" onclick="hitungDeterminan()"><br><br>
+
+        Determinan : <input type="text" name="hasil" readonly><br><br>
+        Keterangan : <input type="text" name="ket" size="50" readonly>
+    </form>
 </body>
 </html>
